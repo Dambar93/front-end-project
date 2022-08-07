@@ -36,3 +36,61 @@
     transform: rotate(360deg);
   }
 }
+
+.buy {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.part_desc dt, .part_desc dd {
+  align-items: flex-start;
+  display: inline-block;
+
+
+}
+.part_desc dt {
+  position: absolute;
+
+  
+
+
+}
+.part_desc dd {
+  padding-left: 200px;
+  max-width: 500px;
+  margin-left: 10px;
+
+}
+.part_desc dl {
+  max-width: 600px;
+
+}
+
+.image-gallery {
+  
+  max-width: 700px;
+  
+}
+
+.image-gallery-image {
+  height: 500px;
+}
+
+.gallery-image .fullscreen .image-gallery-image{
+  height: 75vh;
+}
+
+.gallery-image {
+  flex: auto;
+
+
+}
+
+@media screen and (max-witdth: 400px) {
+  .image-gallery {
+    max-width: 400px;
+  }
+
+}

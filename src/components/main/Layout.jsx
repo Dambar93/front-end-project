@@ -7,7 +7,7 @@ import NavBar from "./NavigationBar";
 
 const Layout = ({children}) => {
     var d = Date(Date.now());
-    var a = d.toString()
+    var a = d.toString();
     return (
         <Container>
 

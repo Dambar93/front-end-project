@@ -16,11 +16,17 @@ const NewList = () =>{
     const [page,setPage] = useState(1);
     const [lastPage, setlastPage]= useState(1);
     const URL='http://localhost/';
+
     
 
     useEffect(() => {
 
-        axios.get(`${URL}api/part-list/new?page=${page}`)
+        axios.get(`${URL}api/part-list/new?page=${page}`,
+            {headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }}
+        )
             .then((response) => {
             setList(response.data.data); setlastPage(response.data.meta.last_page);
           });
@@ -30,7 +36,7 @@ const NewList = () =>{
 
     return(
         <div>
-
+            {console.log(localStorage.getItem("token"))}
             <PartTable list={list} URL={URL}/>
             <Pagination>
                 <Pagination.First onClick={()=>setPage(1)}/>

@@ -26,7 +26,7 @@ const PartTable = ({list,URL}) =>{
                                 };
                                 
                                 return(<tr>
-                                        {console.log(image)}
+                                        {console.log(part)}
                                         <td ><a href={`/part/${part.id}`} ><img src={image} alt="" className="img-fluid" style={{maxHeight:'160px',maxWidth: '225px'}}/></a></td>
                                         <td >
                                             <h5><a href={`/part/${part.id}`}>{part.title}</a></h5>

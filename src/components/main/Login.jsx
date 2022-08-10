@@ -18,6 +18,9 @@ const Login = (props) => {
             if (response.status === 200) {
                 console.log('Login Succesful');
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user_name", response.data.user_name);
+                localStorage.setItem("user_id", response.data.user_id);
+                localStorage.setItem("user_email", response.data.user_email);
                 localStorage.setItem("loggedIn", true);
                 setLogin(true);
                

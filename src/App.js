@@ -10,6 +10,7 @@ import Login from './components/main/Login';
 import React, {useState} from 'react';
 import Register from './components/main/Register';
 import Cart from './components/main/Cart';
+import Delivery from './components/main/Delivery';
 
 
 
@@ -27,6 +28,7 @@ function App() {
     { path: '/login', element: <Login /> },
     { path: '/register', element: <Register/> },
     { path: '/cart', element: <Cart/> },
+    { path: '/delivery', element: <Delivery/> },
   
   ]
   return (

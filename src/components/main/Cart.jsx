@@ -2,19 +2,21 @@ import React, {useEffect, useState} from "react";
 import Table from 'react-bootstrap/Table';
 import CartItem from "./CartItem";
 import { Button } from "react-bootstrap";
+import {useNavigate} from 'react-router-dom';
 
 
 
 const Cart = () => {
-
-    const [items, setItems]= ([JSON.parse(localStorage.getItem('cart'))]);
+    const navigate = useNavigate();
+    const [items, setItems]= ([localStorage.getItem('cart')]);
     const [uniqueList, setUniqueList] = useState([]);
 
     let price = 0;
     useEffect(() => {
         if(items){
-            setUniqueList([...new Map(items.map(item => [item['id'],item])).values()]);
-            localStorage.setItem('cart', JSON.stringify([...new Map(items.map(item => [item['id'],item])).values()]));
+            let arr = JSON.parse(items);
+            setUniqueList([...new Map(arr.map(item => [item['id'],item])).values()]);
+            localStorage.setItem('cart', JSON.stringify([...new Map(arr.map(item => [item['id'],item])).values()]));
         }
         
 
@@ -63,7 +65,7 @@ const Cart = () => {
                     <h4>{price} €</h4>
                 </div>   
                 <div className="d-flex justify-content-center">
-                        <Button>Proceed to delivery addres</Button>
+                        <Button onClick={() => navigate('/delivery')}>Proceed to delivery addres</Button>
                 </div>
             </div>
 

@@ -36,7 +36,7 @@ const NewList = () =>{
 
     return(
         <div>
-            {console.log(localStorage.getItem("token"))}
+            
             <PartTable list={list} URL={URL}/>
             <Pagination>
                 <Pagination.First onClick={()=>setPage(1)}/>

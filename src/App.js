@@ -8,6 +8,8 @@ import ShowPart from './components/main/ShowPart';
 import NewList from './components/main/NewList';
 import Login from './components/main/Login';
 import React, {useState} from 'react';
+import Register from './components/main/Register';
+import Cart from './components/main/Cart';
 
 
 
@@ -17,15 +19,14 @@ import React, {useState} from 'react';
 
 function App() {
   const API_URL='http://localhost/';
-  const [loggedIn, setLoggedIn] = useState(false);
-  const login = () => {
-    setLoggedIn(true);
-  };
+
   const routes = [
     { path: '/', element: <Home/> },
     { path: '/used-parts', element: <UsedList/> },
     { path: '/new-parts', element: <NewList/> },
-    { path: '/login', element: <Login  login={login}/> },
+    { path: '/login', element: <Login /> },
+    { path: '/register', element: <Register/> },
+    { path: '/cart', element: <Cart/> },
   
   ]
   return (

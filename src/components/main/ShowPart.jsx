@@ -43,7 +43,6 @@ const ShowPart = ({URL}) =>{
     }, [])
 
     useEffect(() => {
-        console.log(images.length)
         if(gallery.length< images.length){
             images.map((image) => {
                     
@@ -60,8 +59,19 @@ const ShowPart = ({URL}) =>{
     return(
         <div className="d-flex justify-content-between flex-column-reverse flex-md-row">
             <div className="part_desc">
+                
                 <div><h3>{part.title}</h3></div>
-                <div className="d-flex justify-content-between"><h3>Price: {part.price} €</h3>  <Button>BUY</Button></div>
+                <div className="d-flex justify-content-between"><h3>Price: {part.price} €</h3>  
+                <Button onClick={() => {
+                    if(!localStorage.getItem('cart')){
+                        localStorage.setItem('cart', JSON.stringify([{id: part.id, image: URL+images[0][0], title: part.title, price: part.price}]))
+                    } else if(localStorage.getItem('cart')){
+                        let arr = JSON.parse(localStorage.getItem('cart'));
+                        arr.push({id: part.id, image: URL+images[0][0], title: part.title, price: part.price});
+                        localStorage.setItem('cart', JSON.stringify([...new Map(arr.map(item => [item['id'],item])).values()]));
+                        
+                    }
+                }}>Add to cart</Button></div>
                 <h4>Part info: </h4>
                 <dl>
                     
@@ -76,7 +86,7 @@ const ShowPart = ({URL}) =>{
                             })}
                             
                     </dd></div>
-                            {console.log(gallery)}
+                           
                 
                     <div><dt>Comment:</dt><dd>{part.comment}</dd></div>
                     <div><dt>Category:</dt><dd>{part.category}</dd></div>

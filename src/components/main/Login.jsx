@@ -1,22 +1,20 @@
 import React, {useState} from 'react';
-import axios from 'axios';
 import apiClient from '../../services/api';
-import { Redirect } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(false);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        apiClient.post('api/getToken',{
+        apiClient.post('api/get-token',{
             email: email,
             password: password
-        }).then(response=> {
-
-            
+        }        
+        ).then(response=> {
             if (response.status === 200) {
                 console.log('Login Succesful');
                 localStorage.setItem("token", response.data.token);
@@ -26,6 +24,8 @@ const Login = (props) => {
                 
             }
 
+        }).catch(error => {
+            setError(error.response.data.error);
         })
     }
     if(login) {
@@ -36,6 +36,7 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
+            <p style={{color: 'red'}}>{error}</p>
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"

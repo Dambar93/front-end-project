@@ -11,6 +11,8 @@ import React, {useState} from 'react';
 import Register from './components/main/Register';
 import Cart from './components/main/Cart';
 import Delivery from './components/main/Delivery';
+import OrdersLogged from './components/main/OrdersLogged';
+import OrderNotLogged from './components/main/OrderNotLogged';
 
 
 
@@ -29,6 +31,9 @@ function App() {
     { path: '/register', element: <Register/> },
     { path: '/cart', element: <Cart/> },
     { path: '/delivery', element: <Delivery/> },
+    { path: '/orders', element: <OrdersLogged/> },
+    { path: '/find-order', element: <OrderNotLogged/> },
+    
   
   ]
   return (

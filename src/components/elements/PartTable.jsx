@@ -15,7 +15,7 @@ const PartTable = ({list,URL}) =>{
     return(
         <div>
 
-            <Table striped bordered hover >
+            <Table bordered hover >
             
                 <tbody>
                     

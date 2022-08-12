@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import apiClient from '../../services/api';
+import OrderSucces from "./OrderSucces";
 
 
 
@@ -14,11 +15,13 @@ const Delivery = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [comment, setComment] = useState('');
+    const [order, setOrder] = useState(false);
+    const [orderId, setOrderId] = useState('');
+
     const handleSubmit = (e) => {
         e.preventDefault();
         apiClient.post('api/order',{
-            country: country,
-            
+            country: country,            
             name: name,
             city: city,
             address: address,
@@ -26,19 +29,29 @@ const Delivery = () => {
             email: email,
             phone: phone,
             comment: comment,
+            items: JSON.parse(localStorage.getItem('cart')),
         }        
         ).then(response=> {
+
             if (response.status === 200) {
                 
-               console.log('succes')
+                if (response.data.error){
+                    
+                } else if(response.data.order_id) {
+                    localStorage.removeItem('cart')
+                    setOrderId(response.data.order_id);
+                    setOrder(true);
+                    
+                } 
                 
             }
 
         }).catch(error => {
             
-            console.log(error)
+            
         })
     }
+
 
     const checkCart = localStorage.getItem('cart');
     useEffect(() => {
@@ -53,7 +66,9 @@ const Delivery = () => {
 
     }, [])
 
-    
+    if (order) {
+        return(<OrderSucces orderId = {orderId}/>);
+    }
     if(!localStorage.getItem('loggedIn')){
     return (
         <div>

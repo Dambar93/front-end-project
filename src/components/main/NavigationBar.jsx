@@ -3,12 +3,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {useNavigate} from 'react-router-dom';
+import OrderNotLogged from "./OrderNotLogged";
 
 const NavigationBar = () => {
     const navigate = useNavigate();
     const [logged, setLogged] = useState(false);
-    const [content, setContent] = useState(<Nav.Link href="/login">Login</Nav.Link>);
-    const [registration, setRegistration] = useState(<Nav.Link href="/register">Register</Nav.Link>);
+    const [content, setContent] = useState();
+    const [registration, setRegistration] = useState();
+    const [orderLoged, setOrderLoged] = useState();
+    const [orderNotLogged, setOrderNotLogged] = useState();
     
     const logout = () => {
         
@@ -24,8 +27,11 @@ const NavigationBar = () => {
             setLogged(true)
             setContent(<button onClick={logout} className="nav-link btn btn-link">Logout</button> )
             setRegistration();
+            setOrderNotLogged();
+            setOrderLoged(<Nav.Link href="/orders">Orders</Nav.Link>);
         } else {
                 setLogged(false);
+                setOrderNotLogged(<Nav.Link href="/find-order">Find Order</Nav.Link>)
                 setContent(<Nav.Link href="/login">Login</Nav.Link>) ;
                 setRegistration(<Nav.Link href="/register">Register</Nav.Link>)
             }
@@ -41,9 +47,12 @@ const NavigationBar = () => {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/used-parts">Used Parts</Nav.Link>
                 <Nav.Link href="/new-parts">New Parts</Nav.Link>
+                <Nav.Link href="/cart" >Cart </Nav.Link>
+                {orderNotLogged}
+                {orderLoged}
                 {content}
                 {registration}
-                <Nav.Link href="/cart" >Cart </Nav.Link>
+                
 
                 
             </Nav>

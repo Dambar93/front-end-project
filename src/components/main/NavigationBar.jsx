@@ -16,7 +16,10 @@ const NavigationBar = () => {
     const logout = () => {
         
         localStorage.removeItem("loggedIn", false);
-        localStorage.removeItem("token", '');
+        localStorage.removeItem("token");
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("user_email");
+        localStorage.removeItem("user_name");
         return (navigate('/'));
         
         
@@ -33,30 +36,33 @@ const NavigationBar = () => {
                 setLogged(false);
                 setOrderNotLogged(<Nav.Link href="/find-order">Find Order</Nav.Link>)
                 setContent(<Nav.Link href="/login">Login</Nav.Link>) ;
-                setRegistration(<Nav.Link href="/register">Register</Nav.Link>)
+                setRegistration(<Nav.Link href="/register">Register</Nav.Link>);
+                setOrderLoged();
             }
 
     },[localStorage.getItem('loggedIn'),logged])
 
 
     return (
-        <Navbar bg="dark" variant="dark" >
-            <Container>
-            <Navbar.Brand href="/"><img src="logo192.png" alt="" style={{width: 50 }} /> I Want part</Navbar.Brand>
-            <Nav className="me-auto">
+
+
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container>
+        <Navbar.Brand href="/"><img src="logo192.png" alt="" style={{width: 50 }} /> I Want part</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/used-parts">Used Parts</Nav.Link>
                 <Nav.Link href="/new-parts">New Parts</Nav.Link>
-                <Nav.Link href="/cart" >Cart </Nav.Link>
+                <Nav.Link href="/cart" >Cart </Nav.Link>                
                 {orderNotLogged}
                 {orderLoged}
                 {content}
-                {registration}
-                
-
-                
+                {registration} 
             </Nav>
-            </Container>
+        </Navbar.Collapse>
+        </Container>
         </Navbar>
     )
 }

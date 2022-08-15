@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import Pagination from 'react-bootstrap/Pagination';
-import Table from 'react-bootstrap/Table';
-import { Button } from "react-bootstrap";
 import PartTable from "../elements/PartTable";
 
 

@@ -28,7 +28,7 @@ const PartTable = ({list,URL}) =>{
                                     image = URL+part.images[0]
                                 };
                                 
-                                return(<tr>
+                                return(<tr className="part-table">
                                         
                                         <td ><a href={`/part/${part.id}`} ><img src={image} alt="" className="img-fluid" style={{maxHeight:'160px',maxWidth: '225px'}}/></a></td>
                                         <td >

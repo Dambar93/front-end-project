@@ -20,9 +20,9 @@ const Delivery = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        apiClient.post('api/order',{
+        apiClient.post('api/create-order',{
             country: country,            
-            name: name,
+            buyer: name,
             city: city,
             address: address,
             zip: zip,
@@ -62,6 +62,9 @@ const Delivery = () => {
 
         if(localStorage.getItem('user_email')){
             setEmail(localStorage.getItem('user_email'))
+        }
+        if(localStorage.getItem('user_name')){
+            setName(localStorage.getItem('user_name'))
         }
 
     }, [])

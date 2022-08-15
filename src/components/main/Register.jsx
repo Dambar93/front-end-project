@@ -79,7 +79,7 @@ const Register = (props) => {
                 <input
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="Repeat Password"
                     value={secondPassword}
                     onChange={e => setSecondPassword(e.target.value)}
                     required

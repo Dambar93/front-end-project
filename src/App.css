@@ -39,9 +39,7 @@
 
 .buy {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
+
 }
 
 .part_desc dt, .part_desc dd {
@@ -88,9 +86,30 @@
 
 }
 
-@media screen and (max-witdth: 400px) {
+@media only screen and (max-width: 500px) {
   .image-gallery {
     max-width: 400px;
   }
 
+  .part-table img {
+    max-width: 400px;
+  }
+
+  .part-table {
+    display: grid;
+    text-align: center;
+  }
+
+  .cart-table tr{
+    display: grid;
+    text-align: center;
+    border-color: white;
+  }
+
+  .cart-table th{
+    display: none;
+  }
+  
+
 }
+

@@ -37,7 +37,7 @@ const Cart = () => {
                         window.location.reload(false);
                     }}>Empty cart</Button>
                 </div>
-                <Table hover>
+                <Table hover className="cart-table">
                     <thead>
                         <tr>
                             <th>Image</th>

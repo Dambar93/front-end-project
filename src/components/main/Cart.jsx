@@ -23,8 +23,8 @@ const Cart = () => {
     }, []) 
     if (!items){
         return (
-            <div>
-                <h1>Basket is empty</h1>
+            <div >
+                <h1 className="text-center">Basket is empty</h1>
             </div>
         )
     } else if(items) {
